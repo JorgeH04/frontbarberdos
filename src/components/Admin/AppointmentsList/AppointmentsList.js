@@ -58,12 +58,12 @@ const AppointmentsList = () => {
                 <thead>
                     <tr className='table-header'>
                         <td id='td-white'></td>
-                        <th>Sunday</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
+                        <th>Domingo</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
                     </tr>
                 </thead>
                 <tbody>

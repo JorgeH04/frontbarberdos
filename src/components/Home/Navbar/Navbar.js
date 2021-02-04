@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 //import './Navbar.css'
 import {time, fullTime} from '../../../time'
 import {checkCookie, getCookie, deleteCookie} from '../../../cookies'
-//import SideNav from '../../SideNav/SideNav'                                 
+//import SideNav from '../../SideNav/SideNav'    
+   
+//   <li>
+                     //    <Link  to='/contact'>
+                    //     Contacto
+                //      </Link>
+               //  </li>                             
 
 
 
@@ -28,21 +34,21 @@ const Navbar = () => {
             userProfile.style.display = 'none'
 
         }
-        // else{
-        //     controlPanel.style.display = 'none'
-        //     userProfile.style.display = 'block'
-        // }
+        else{
+            controlPanel.style.display = 'none'
+            userProfile.style.display = 'block'
+        }
  
         if(checkCookie('status')){
             helloUser.style.display = 'flex'
             loginAndReg.style.display = 'none'
             
         }
-        // else{
-        //     helloUser.style.display = 'none'
-        //     loginAndReg.style.display = 'flex'
-        //     userProfile.style.display = 'none'
-        // }
+        else{
+            helloUser.style.display = 'none'
+            loginAndReg.style.display = 'flex'
+            userProfile.style.display = 'none'
+        }
     },[])
 
     const logout = () =>{
@@ -73,37 +79,67 @@ const Navbar = () => {
     return (
 
 
-        <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
-        <div class="container">
-            <div class="navbar-header">
+        <header className="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+        <div className="container">
+            <div className="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" >
                 <Link  to='/'>
                      <img src="images/mustachelogo.png" alt="logo"/>
-                </Link>             
+                </Link>    
+                </a>         
             </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
+            <div className="collapse navbar-collapse">
+                <ul className="nav navbar-nav navbar-right">
+
+                    <li className="active">
                         <Link  to='/'>
                             Home
                         </Link>
                     </li>
-                    <li><a href="about-us.html">About Us</a></li>
+
                     <li>
-                      <Link className='links login-link disappear' to='/login'>
-                        Login
-                      </Link>
+                         <Link  to='/about'>
+                            Nosotros
+                         </Link>
                     </li>
+                        
+ 
                     <li>
-                      <Link className='links disappear' to='/register'>
-                          Registrarse
-                      </Link>
+                         <Link className='links cp' to='/admin'>
+                           Panel de control
+                         </Link>
                     </li>
+
+                    <li>
+                          <Link className='links up' to='/profile'>
+                            Perfil
+                          </Link>
+                    </li>
+
+
+                   
+                    <li>
+                          <Link className='login-reg-links' to='/login'>
+                            Login
+                          </Link>
+                    </li>
+
+                     
+                    <div className='user-loggedIn'>
+                      <li>
+                          <button className='disappear' onClick={logout}>Salir</button>
+                      </li>
+
+                    </div>
+
+               
+
                 </ul>
             </div>
         </div>

@@ -3,8 +3,9 @@ import Hero from './Hero/Hero'
 import Navbar from './Navbar/Navbar'
 import Services from './Services/Services'
 import Hours from './Hours/Hours'
+import Footer from './Footer/Footer'
 
-import './Home.css'
+//import './Home.css'
 
 const Home = () => {
     return (
@@ -12,7 +13,8 @@ const Home = () => {
             <Navbar/>
             <Hero/>
             <Services/>
-            <Hours/>      
+            <Hours/>  
+            <Footer/>    
         </div>
     )
 }

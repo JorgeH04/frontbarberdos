@@ -30,8 +30,8 @@ const UserProfile = (props) => {
 
     
     const getProfile = (userID) =>{
-       axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
-       //  axios.get(`https://backbarber.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
+      // axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
+         axios.get(`https://backbarber.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
 
             let {error, email, name, phone } = response.data 
             if(error){
@@ -45,8 +45,8 @@ const UserProfile = (props) => {
                 console.log(response.data)
             }
         })
-      //   axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
-       axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
+        axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
+      // axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
             console.log(response.data)
 
             let {error, day, time, date } = response.data 
@@ -74,8 +74,8 @@ const UserProfile = (props) => {
             obj.phone = updatedPhone
             obj.userID = getCookie('id')
 
-          //   axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
-           axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
+             axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
+          // axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
                 let {error} = response.data
 
                 if(error){
@@ -115,8 +115,8 @@ const UserProfile = (props) => {
 
     const cancelAppointment = async() => {
 
-       //  let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
-        let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
+        let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
+       // let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
         console.log(response.data)
         let {error} = response.data
         if(error){
@@ -130,7 +130,9 @@ const UserProfile = (props) => {
 
     const deleteAcc = async() =>{
         console.log('id cookie ',getCookie('id'))
-        let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
+       // let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
+       let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
+
         let {error} = response.data
         if(error){
             alert(error)
@@ -160,7 +162,7 @@ const UserProfile = (props) => {
                         <li className='profile-make-appointment'>
                             <i className="fa fa-plus" aria-hidden="true"></i>
                             <Link className='link-make-appo' to='/appointment'>
-                                MAKE APPOINTMENT
+                                TOMAR TURNO
                             </Link>
                         </li>
                         <li>
@@ -183,13 +185,13 @@ const UserProfile = (props) => {
            
                     <div id='user-profile-info' className='user-profile-box'>
                         <div>
-                            <h1>Profile Info</h1>
+                            <h1>Información del perfil</h1>
                             <div className='profile-underline'></div>
                         </div>
                         
                         <div className='user-profile-info-div'>
                             <div>
-                                <p>Name:</p>
+                                <p>Nombre:</p>
                                 <span>{name}</span>
                             </div>
                             <div>
@@ -197,7 +199,7 @@ const UserProfile = (props) => {
                                 <span>{email}</span>
                             </div>
                             <div>
-                                <p>Phone:</p>
+                                <p>Teléfono:</p>
                                 <span>{phone}</span>
                             </div>
                         </div>
@@ -246,7 +248,7 @@ const UserProfile = (props) => {
 
                     <div id='user-profile-delete-acc' className='user-profile-box'>
                         <div className='profile-mr-bottom'>
-                            <h1>Delete Account</h1>
+                            <h1>Eliminar cuenta</h1>
                             <div className='profile-underline'></div>
                         </div>
                         <p>

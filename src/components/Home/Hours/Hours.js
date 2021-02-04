@@ -18,7 +18,7 @@ const Hours = () => {
         <div className='hours' id='hours-navigate'>
 
             <div className='hours-container'>
-                <h1>Working Hours</h1>
+                <h1>Horarios de trabajo</h1>
                 <div className='hours-flex'>
                     <div className={day === 0 ? `active-day hours-box `:  `not-active-day hours-box ` }>
                         <h2>Dom</h2>
