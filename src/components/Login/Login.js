@@ -75,14 +75,14 @@ const Login = (props) => {
                         : ''}
                         <p>Email:</p>
                         <input type="text" 
-                            placeholder='Email...'
+                            placeholder=' '
                             className='form-container-input'
                             name='email'
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         <p>Password:</p>
                         <input type="password"
-                            placeholder='Password...'
+                            placeholder=' '
                             className='form-container-input'
                             name='password'
                             onChange={(e) => setPass(e.target.value)}
