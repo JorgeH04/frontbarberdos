@@ -100,7 +100,7 @@ const Register = (props) => {
                             onKeyPress={(e) => registerByPress(e)}
                         /> 
                         <div className='reg-btn-div'>
-                            <button onClick={handleRegister} className='reg-submit'>Register</button>
+                            <button onClick={handleRegister} className='reg-submit'>Registrate</button>
                         </div>
                         <div className='new-account-login'>
                             <Link to='/login' className='new-account-link'>

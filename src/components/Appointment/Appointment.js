@@ -176,7 +176,7 @@ const Appointment = (props) => {
                         onChange={(e)=>setPhone(e.target.value)}/>
                     </div>
                     <div id='make-btn' className='appointment-inner-container'>
-                        <button onClick={makeAppointment} className='appointment-btn'>Send</button>
+                        <button onClick={makeAppointment} className='appointment-btn'>Enviar</button>
                     </div>
                     <div id='change-btn' className='appointment-inner-container'>
                         <button onClick={changeAppointment} className='appointment-btn'>Update</button>

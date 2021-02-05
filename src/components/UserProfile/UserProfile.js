@@ -30,8 +30,8 @@ const UserProfile = (props) => {
 
     
     const getProfile = (userID) =>{
-       axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
-      //   axios.get(`https://backbarber.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
+      // axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
+          axios.get(`https://backbarber.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
 
             let {error, name, email,   phone } = response.data 
             if(error){
@@ -46,8 +46,8 @@ const UserProfile = (props) => {
                 console.log(response.data)
             }
         })
-      //  axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
-       axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
+        axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
+     //  axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
             console.log(response.data)
 
             let {error, day, time, date, nombre } = response.data 
@@ -75,8 +75,8 @@ const UserProfile = (props) => {
             obj.phone = updatedPhone
             obj.userID = getCookie('id')
 
-         //    axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
-           axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
+             axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
+          // axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
                 let {error} = response.data
 
                 if(error){
@@ -117,8 +117,8 @@ const UserProfile = (props) => {
 
     const cancelAppointment = async() => {
 
-      //  let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
-         let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
+      let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
+      //   let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
         console.log(response.data)
         let {error} = response.data
         if(error){
@@ -132,8 +132,8 @@ const UserProfile = (props) => {
 
     const deleteAcc = async() =>{
         console.log('id cookie ',getCookie('id'))
-         let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
-      // let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
+      //   let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
+       let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
 
         let {error} = response.data
         if(error){
