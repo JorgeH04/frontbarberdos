@@ -1,6 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300);
 
 
+.midnight-bluee{
+  background-color: black
+}
+
 .hero{
   height: 100vh;
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("../../../assets/hero.jpg"); */

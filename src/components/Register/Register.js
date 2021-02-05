@@ -10,6 +10,7 @@ import Navbar from '../Home/Navbar/Navbar'
 
 
 const Register = (props) => {
+    const [nombre, setNombre] = useState('eli@test.com')
     const [email, setEmail] = useState('eli@test.com')
     const [pass, setPass] = useState('123')
     const [confirmPass, setConfirmPass] = useState('123')
@@ -24,6 +25,7 @@ const Register = (props) => {
         loading.style.display = 'block'
 
         let userData = {}
+        userData.nombre = nombre
         userData.email = email
         userData.pass = pass
         userData.confirmPass = confirmPass
@@ -65,6 +67,16 @@ const Register = (props) => {
                     {error !== '' ?  <ErrorMsg info={error}/>
                         
                         : ''}
+
+                         <p>Nombre:</p>
+                        <input type="email" 
+                            placeholder=' '
+                            className='form-container-input'
+                            name='nombre'    
+                            onChange={(e) => setNombre(e.target.value)}
+                        />
+
+
                         <p>Email:</p>
                         <input type="email" 
                             placeholder='Email...'

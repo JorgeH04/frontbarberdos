@@ -8,7 +8,7 @@ import {getCookie, setCookie, setCookieInMins, deleteCookie} from '../../cookies
 
 
 const UserProfile = (props) => {
-
+    //const [nombre, setNombre] = useState('')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -17,7 +17,7 @@ const UserProfile = (props) => {
     const [updatedEmail, setUpdatedEmail] = useState('')
     const [updatedPhone, setUpdatedPhone] = useState('')
 
-    const [time, setTime] = useState('Empty')
+    const [time, setTime] = useState('Vacío')
     const [date, setDate] = useState('')
     const [day, setDay] = useState('')
 
@@ -30,26 +30,27 @@ const UserProfile = (props) => {
 
     
     const getProfile = (userID) =>{
-      // axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
-         axios.get(`https://backbarber.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
+       axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
+      //   axios.get(`https://backbarber.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
 
-            let {error, email, name, phone } = response.data 
+            let {error, name, email,   phone } = response.data 
             if(error){
                 console.log(error)
             }
             else{
                 setName(name)
+               // setNombre(nombre)
                 setEmail(email)
                 setPhone(phone)
                 setCookie('phone', phone ,2)
                 console.log(response.data)
             }
         })
-        axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
-      // axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
+      //  axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
+       axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
             console.log(response.data)
 
-            let {error, day, time, date } = response.data 
+            let {error, day, time, date, nombre } = response.data 
             if(error){
                 console.log(error)
             }
@@ -74,8 +75,8 @@ const UserProfile = (props) => {
             obj.phone = updatedPhone
             obj.userID = getCookie('id')
 
-             axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
-          // axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
+         //    axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
+           axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
                 let {error} = response.data
 
                 if(error){
@@ -83,16 +84,17 @@ const UserProfile = (props) => {
                 }
                 else{
                     
+                     
                     if(email !=='')
                         setEmail(email)
                     if(phone !==''){
                         setPhone(phone)
                         setCookie('phone', phone ,2)
                     }
-                    if(name !==''){
-                        setCookie('name', name ,2)
-                        setName(name)
-                    }
+                    // if(name !==''){
+                    //     setCookie('name', name ,2)
+                    //     setName(name)
+                    // }
                     alert('data successfully updated!')
                     window.location.reload(false);
                     console.log('server res: ', response.data)
@@ -115,23 +117,23 @@ const UserProfile = (props) => {
 
     const cancelAppointment = async() => {
 
-        let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
-       // let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
+      //  let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
+         let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
         console.log(response.data)
         let {error} = response.data
         if(error){
             alert(error)
         }
         else{
-            alert('Appointment deleted')
+            alert('Su turno ha sido cancelado')
             window.location.replace('/profile')
         }
     }
 
     const deleteAcc = async() =>{
         console.log('id cookie ',getCookie('id'))
-       // let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
-       let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
+         let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
+      // let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
 
         let {error} = response.data
         if(error){
@@ -150,117 +152,77 @@ const UserProfile = (props) => {
     }
 
     return (
+
         <div>
-            <Navbar/>
-            <div className='user-profile-container'>
-                <div className='user-profile-left'>
-                    <h2>Welcome</h2>
-                    <img className='profile-img' src={profileImg} alt=""/>
-                    <h2>Good Day</h2>
+<Navbar/>
 
-                    <ul>
-                        <li className='profile-make-appointment'>
-                            <i className="fa fa-plus" aria-hidden="true"></i>
-                            <Link className='link-make-appo' to='/appointment'>
-                                TOMAR TURNO
-                            </Link>
-                        </li>
-                        <li>
-                            <i className="fa fa-user" aria-hidden="true"></i>
-                            <a href='#user-profile-info'>PERSONAL INFO</a>
-                        </li>
-                        <li>
-                            <i className="fa fa-pencil mr-right-i" aria-hidden="true"></i>
-                            <a href='#user-profile-updateinfo'>UPDATE INFO</a>
-                        </li>
-                        <li>
-                            <i className="fa fa-trash" aria-hidden="true"></i>
-                            <a href='#user-profile-delete-acc'>DELETE ACCOUNT</a>
-                        </li>
-                    </ul>
+<div class="bg-dark">
 
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="index.html">
+                        <img class="align-content" src="images/logo.png" alt=""/>
+                    </a>
                 </div>
-
-                <div className='user-profile-right'>
-           
-                    <div id='user-profile-info' className='user-profile-box'>
-                        <div>
-                            <h1>Información del perfil</h1>
-                            <div className='profile-underline'></div>
+                <div class="login-form">
+                    <form>
+                        <div class="form-group">
+                            <h2><u> Información del perfil </u></h2>
                         </div>
-                        
-                        <div className='user-profile-info-div'>
-                            <div>
-                                <p>Nombre:</p>
-                                <span>{name}</span>
-                            </div>
-                            <div>
-                                <p>Email:</p>
-                                <span>{email}</span>
-                            </div>
-                            <div>
-                                <p>Teléfono:</p>
-                                <span>{phone}</span>
-                            </div>
+                         <div class="form-group">
+                            <span>{name}</span>
                         </div>
-                        <div className='user-profile-appointment'>
-                            <div className='user-profile-appointment-flex'>
-                                <div className='user-profile-appointment-btns'>
-                                    <p>You have appointment to:</p>
-                                    <button onClick={changeAppointment} id='profile-btn-change'>Change</button>
-                                    <button onClick={cancelAppointment} className='profile-btn-color-red'>Cancel</button>
+                        <div class="form-group">
+                            <span>{email}</span>
+                        </div>
+                        <div class="form-group">
+                            <span>{phone}</span>
+                        </div>
+                        <div class="checkbox">
+                            <label> 
+                                    <u>
+                                Tiene un turno para el día:
+                                    </u>
+                             </label>
+                             <label class="pull-right">
+                                <a>
+                                   <p>{day}</p>
+                                   <p>{time}</p>
+                                   <p>{date}</p>
+                                </a>
+                             </label>
+                        </div>
+                                <button onClick={cancelAppointment} class="btn btn-success btn-flat m-b-30 m-t-30">Cancelar turno</button>
+                                <div class="social-login-content">
+                                    <div class="social-button">
+                                         <Link  type="button" class="btn social facebook btn-flat btn-addon mb-3" to='/appointment'>
+                                                Tomar turno  
+                                         </Link>
+                                    </div>  
+                                 </div>
+                                 <div class="social-login-content">
+                                    <div class="social-button">
+                                        <button onClick={deleteAcc}  type="button" class="btn social facebook btn-flat btn-addon mb-3" to='/appointment'>
+                                                Eliminar la cuenta
+                                         </button>
+                                    </div>
                                 </div>
-                                <div className='user-profile-appointment-time'>
-                                    <p>{day}</p>
-                                    <p>{time}</p>
-                                    <p>{date}</p>
+                                <div class="register-link m-t-15 text-center">
                                 </div>
-                            </div>     
-                        </div>
-                    </div>
-
-
-                    <div id='user-profile-updateinfo' className='user-profile-box'>
-
-                        <div className='profile-mr-bottom'>
-                            <h1>Update Info</h1>
-                            <div className='profile-underline'></div>
-                        </div>
-                        
-
-                        <p>Name:</p>
-                        <input type="text" placeholder='name...'
-                        onChange={(e) => setUpdatedName(e.target.value)}
-                        />
-                        <p>Email:</p>
-                        <input type="text" placeholder='email...'
-                        onChange={(e) => setUpdatedEmail(e.target.value)}
-
-                        />
-                        <p>Phone:</p>
-                        <input type="text" placeholder='phone...'
-                        onChange={(e) => setUpdatedPhone(e.target.value)}
-                        />
-                        <br/>
-                        <button onClick={updateProfile} className='profile-update-btn'>update</button>
-
-                    </div>
-
-                    <div id='user-profile-delete-acc' className='user-profile-box'>
-                        <div className='profile-mr-bottom'>
-                            <h1>Eliminar cuenta</h1>
-                            <div className='profile-underline'></div>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Est aliquid voluptates quos sit ea omnis maxime
-                            perspiciatis vitae, provident
-                        </p>
-                        <button onClick={deleteAcc}  id='profile-delete-btn'>Delete</button>
-
-                    </div>
+                    </form>
                 </div>
-            </div>      
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+ </div>
+            
         </div>
     )
 }

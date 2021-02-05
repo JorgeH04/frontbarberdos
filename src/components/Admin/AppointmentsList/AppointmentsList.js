@@ -17,8 +17,8 @@ const AppointmentsList = () => {
         setThisSunday(makeDate(sundays.sunday))
         setLastSunday(makeDate(sundays.nextSunday)) 
 
-       // axios.get('http://localhost:3000/getappointments').then((response)=>{
         axios.get('https://backbarber.herokuapp.com/getappointments').then((response)=>{
+       // axios.get('https://backbarber.herokuapp.com/getappointments').then((response)=>{
             console.log(response.data)
 
             let {error} = response.data
@@ -58,12 +58,12 @@ const AppointmentsList = () => {
                 <thead>
                     <tr className='table-header'>
                         <td id='td-white'></td>
-                        <th>Domingo</th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miércoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
                     </tr>
                 </thead>
                 <tbody>
