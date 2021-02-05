@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
-//import './Navbar.css'
+import './Navbar.css'
 import {time, fullTime} from '../../../time'
 import {checkCookie, getCookie, deleteCookie} from '../../../cookies'
 //import SideNav from '../../SideNav/SideNav'    
@@ -79,6 +79,7 @@ const Navbar = () => {
     return (
 
 
+
         <header className="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
         <div className="container">
             <div className="navbar-header">
@@ -108,7 +109,15 @@ const Navbar = () => {
                             Nosotros
                          </Link>
                     </li>
-                        
+
+                       
+
+
+                    <li>
+                         <Link  to='/contacto'>
+                            Contacto
+                         </Link>
+                    </li>    
  
                     <li>
                          <Link className='links cp' to='/admin'>
@@ -122,13 +131,13 @@ const Navbar = () => {
                           </Link>
                     </li>
 
-
-                   
-                    <li>
+                   <li>
                           <Link className='login-reg-links' to='/login'>
-                            Login
+                            Iniciar Sesión
                           </Link>
                     </li>
+                   
+                 
 
                      
                     <div className='user-loggedIn'>
@@ -148,10 +157,6 @@ const Navbar = () => {
 
 
 
-
-
-
-        
 
     )
 
