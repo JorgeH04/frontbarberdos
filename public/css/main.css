@@ -97,16 +97,17 @@
 
 .user-loggedIn button{
   margin-left: 10px;
-  padding: 5px;
+  padding: 1px;
   background-color: indianred;
   border-radius: 5px;
   border: none;
   width: 100px;
-  height: 25px;
+  height: 30px;
   color: white;
   transition: all ease-in-out 0.3s;
   cursor: pointer;
 }
+
 
 .user-loggedIn button:hover{
   background-color: rgb(189, 61, 61);

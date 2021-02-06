@@ -204,7 +204,7 @@ const UserProfile = (props) => {
                                  </div>
                                  <div class="social-login-content">
                                     <div class="social-button">
-                                        <button onClick={deleteAcc}  type="button" class="btn social facebook btn-flat btn-addon mb-3" to='/appointment'>
+                                        <button onClick={deleteAcc}  type="button" class="btn btn-danger  btn-flat btn-addon mb-3"  to='/appointment'>
                                                 Eliminar la cuenta
                                          </button>
                                     </div>

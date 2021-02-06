@@ -17,8 +17,8 @@ const AppointmentsList = () => {
         // setThisSunday(makeDate(sundays.sunday))
         // setLastSunday(makeDate(sundays.nextSunday)) 
 
-        axios.get('http://localhost:4000/getappointments').then((response)=>{
-       // axios.get('https://backbarber.herokuapp.com/getappointments').then((response)=>{
+   //     axios.get('http://localhost:4000/getappointments').then((response)=>{
+        axios.get('https://backbarber.herokuapp.com/getappointments').then((response)=>{
             console.log(response.data)
 
             let {error} = response.data

@@ -1,11 +1,55 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 import './Contacto.css'
 import { Link } from 'react-router-dom'
 import Navbar from '../Home/Navbar/Navbar'
 import Footer from '../Home/Footer/Footer'  
+
+
+
  
 
-const Contact = () => {
+const Contact = (props) => {
+
+    const [usuario, setUsuario] = useState({
+        name: '',
+        email: '',
+        asunto: '',
+        mensaje: '' 
+      });
+    
+
+        // const [nombre, setNombre] = useState('eli@test.com')
+        // const [email, setEmail] = useState('eli@test.com')
+        // const [asunto, setAsunto] = useState('123')
+        // const [mensaje, setMensaje] = useState('123')
+     
+        function handleInputChange(e) {
+            setUsuario({
+              ...usuario,
+              [e.target.name]: e.target.value
+            });
+          }
+        
+        
+          
+          async function handleSubmit(e) {
+            //e.preventDefault();
+            try {
+              await axios.post('http://localhost:4000/email', usuario);
+            } catch (error) {
+              //mostrarError(error.response.data);
+              console.log(error);
+            }
+           // e.history.push({ pathname: '/appointment' });
+
+          }
+           
+            
+ 
+     
+ 
+
     return ( 
 
 
@@ -18,34 +62,64 @@ const Contact = () => {
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="touch-wrapper">
                         <h1 class="contact-h1">Ponete en contacto con nosotros</h1>
-                        <form action="/email" method="POST">
+                        <form onSubmit={handleSubmit}>
                             <div class="group-inline u-s-m-b-30">
                                 <div class="group-1 u-s-p-r-16">
                                     <label for="contact-name">Nombre
                                         <span class="astk">*</span>
                                     </label>
-                                    <input type="text" name="name" id="contact-name" class="text-field" placeholder=""/>
+                                    <input 
+                                      type="text" 
+                                      name="name" 
+                                      onChange={handleInputChange}
+                                   //   onChange={(e) => setNombre(e.target.value)}
+                                      value={usuario.name}
+                                      id="contact-name" 
+                                      class="text-field" 
+                                      placeholder=""/>
                                 </div>
                                 <div class="group-2">
                                     <label for="contact-email">Email
                                         <span class="astk">*</span>
                                     </label>
-                                    <input type="text" name="email" id="contact-email" class="text-field" placeholder=""/>
+                                    <input 
+                                       type="text"
+                                       name="email" 
+                                      onChange={handleInputChange}
+                                    // onChange={(e) => setEmail(e.target.value)}
+                                       value={usuario.email}
+                                       id="contact-email" 
+                                       class="text-field" 
+                                        placeholder=""/>
                                 </div>
                             </div>
                             <div class="u-s-m-b-30">
                                 <label for="contact-subject">Asunto
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="text" name="asunto" id="contact-subject" class="text-field" placeholder=""/>
+                                <input 
+                                    type="text"
+                                    name="asunto" 
+                                    onChange={handleInputChange}
+                                // onChange={(e) => setAsunto(e.target.value)}
+                                    value={usuario.asunto}
+                                    id="contact-subject" 
+                                    class="text-field" 
+                                    placeholder=""/>
                             </div>
                             <div class="u-s-m-b-30">
                                 <label for="contact-message">Mensaje:</label>
-                                <textarea class="text-area" name="message" id="contact-message"></textarea>
+                                <textarea 
+                                   class="text-area" 
+                                   name="mensaje"
+                                   value={usuario.mensaje}
+                            // onChange={(e) => setMensaje(e.target.value)}
+                                   onChange={handleInputChange}
+                                   id="contact-message"></textarea>
                             </div>
-                            <div class="u-s-m-b-30">
-                                <button type="submit" 
-                                class="button button-outline-secondary">
+                            <div class="u-s-m-b-30 mt-5">
+                            <button type="submit" 
+                                class="btn btn-danger  button-outline-secondary">
                                 Enviar mensaje
                             </button>
                             </div>
