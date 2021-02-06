@@ -16,8 +16,7 @@ const About = () => {
 				<div class="row">
 						<div class="col-lg-6 col-md-12">
 								<div class="about-me-info u-s-m-b-30">
-										<h1>Bienvenidos a
-												<span> Barbería Parodi</span>
+										<h1>Bienvenidos a <span> Barbería Parodi</span>
 										</h1>
 										<p>El arte de hacer cerveza es un proceso que lleva tiempo y mucho cuidado, controlando siempre la higiente del equipo y la propia, se necesita conocimientos y experiencia. 
 											Habiendo hecho una tecnicatura en alimentos con especialización en cerveza durante el período 2004-2008 en Suiza, y haber recorrido cada instancia de la producción de 
