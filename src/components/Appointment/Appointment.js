@@ -172,7 +172,7 @@ const Appointment = (props) => {
                     <div id='appo-phone' className='appointment-inner-container'>
                         <p>Celular: <span className='red-astrix'>*</span></p>
                         <input type="tel" className='phone-input' placeholder='phone...' 
-                        value={phone ? phone : 'phone...'}
+                        value={phone ? phone : 'teléfono...'}
                         onChange={(e)=>setPhone(e.target.value)}/>
                     </div>
                     <div id='make-btn' className='appointment-inner-container'>

@@ -169,16 +169,16 @@ const UserProfile = (props) => {
                 <div class="login-form">
                     <form>
                         <div class="form-group">
-                            <h2><u> Información del perfil </u></h2>
-                        </div>
-                         <div class="form-group">
-                            <span>{name}</span>
+                            <h2><u> Mi Cuenta </u></h2>
                         </div>
                         <div class="form-group">
-                            <span>{email}</span>
+                          <u> Nombre:</u> <span>{name}</span>
                         </div>
                         <div class="form-group">
-                            <span>{phone}</span>
+                          <u>Email:</u>  <span>{email}</span>
+                        </div>
+                        <div class="form-group">
+                         <u> Teléfono:</u>  <span>{phone}</span>
                         </div>
                         <div class="checkbox">
                             <label> 
