@@ -40,7 +40,7 @@ const AppointmentsList = () => {
     return (
         <div className='appointments-list'>
             <div>
-                <h1>Control Panel</h1>
+                <h1>Panel de control</h1>
                 <div className='admin-profile-links-container'>
                 <div className='admin-profile-links-container'>
                     <Link to='/' className='admin-profile-link'>
