@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
-import './Navbar.css'
+//import './Navbar.css'
 import {time, fullTime} from '../../../time'
 import {checkCookie, getCookie, deleteCookie} from '../../../cookies'
 //import SideNav from '../../SideNav/SideNav'    
