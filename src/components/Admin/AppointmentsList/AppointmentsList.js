@@ -42,13 +42,19 @@ const AppointmentsList = () => {
             <div>
                 <h1>Control Panel</h1>
                 <div className='admin-profile-links-container'>
+                <div className='admin-profile-links-container'>
                     <Link to='/' className='admin-profile-link'>
                         Home 
                     </Link>
                     /
-                    <Link to='/profile' className='admin-profile-link'>
-                        Profile 
+                    <Link to='/total' className='admin-profile-link'>
+                        Todos los turnos
                     </Link>
+                    /
+                    <Link to='/userlist' className='admin-profile-link'>
+                        Todos los clientes
+                    </Link>
+                </div>
                 </div>
             </div>
             

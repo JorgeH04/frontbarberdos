@@ -14,6 +14,7 @@ import { ProtectedRoute } from './protected.route'
 import {  AdminRoute } from './admin.route'
 
 import Nos from './components/Nos/Nos'
+import UserList from './components/Admin/UsersList/UsersList'
 
 //import './App.css';          
 
@@ -33,6 +34,8 @@ function App() {
           <ProtectedRoute component={Appointment} path='/appointment' />
           <Route path='/admin' component={Admin} />
           <Route path='/total' component={Total} />
+          <Route path='/userlist' component={UserList} />
+
           <ProtectedRoute component={UserProfile} path='/profile' />
           <Route path='*' component={() => '404 PAGE NOT FOUND'} />
 
