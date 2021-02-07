@@ -1,103 +1,161 @@
-import React, {useEffect, useState} from 'react'
-import './AppointmentsList.css'
-import Row from './Row/Row'
-import axios from 'axios'
-import {getSundays, makeDate} from '../../../time'
-import {Link} from 'react-router-dom'
+import React, { Component } from 'react'
+ 
+export default class AppointmentsList  extends Component {
+    constructor() {
+    super();
+    this.state = {
+   
+      appointments: []
+       
+      };
+      // this.handleChange = this.handleChange.bind(this);
+      // this.addPost = this.addPost.bind(this);
 
-const AppointmentsList = () => {
-    // const [thisSunday, setThisSunday] = useState('this')
-    // const [lastSunday, setLastSunday] = useState('last')
-    const [appointments, setAppointments] = useState([])
+    }
 
-    useEffect(()=>{
-        console.log('Appointments list rendred')
+    componentDidMount() {
+      this.fetchPosts();
+  
+    }
 
-        // let sundays = getSundays()
-        // setThisSunday(makeDate(sundays.sunday))
-        // setLastSunday(makeDate(sundays.nextSunday)) 
+    fetchPosts() {
+      fetch('http://localhost:4000/getappointments')
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          this.setState({appointments: data});
+          console.log(this.state.appointments)
+        });
+  
+        
+    }
+  
 
-   //     axios.get('http://localhost:4000/getappointments').then((response)=>{
-        axios.get('https://backbarber.herokuapp.com/getappointments').then((response)=>{
-            console.log(response.data)
+    deleteAppointment(_id) {
 
-            let {error} = response.data
-            if(error){
-                console.log(error)
-            }
-            else{
-                let newAppointments = response.data.filter((obj)=>{
-               //     if( obj.timeInMS > sundays.sunday && obj.timeInMS < sundays.nextSunday)
-                    return true
-                //    else return false  
-                })
-                console.log('newAppointments: ',newAppointments)
-                setAppointments(newAppointments)
-            }
-        })
-    },[])
+       fetch(`http://localhost:4000/delete/${_id}`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          this.fetchPosts();
+        });
+
+        alert('El turno ha sido borrado')
+        window.location.replace('/total')
+    
+      }
 
 
-    return (
-        <div className='appointments-list'>
-            <div>
-                <h1>Control Panel</h1>
-                <div className='admin-profile-links-container'>
-                    <Link to='/' className='admin-profile-link'>
-                        Home 
-                    </Link>
-                    /
-                    <Link to='/profile' className='admin-profile-link'>
-                        Profile 
-                    </Link>
+
+
+
+     render() {    
+
+       return (
+
+        <div >
+        <div id="right-panel" class="right-panel">
+    
+         
+    
+            <div class="breadcrumbs">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                        <div class="page-title">
+                            <h1></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="page-header float-right">
+                        <div class="page-title">
+                           
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <h3>The appointments are between </h3>
-        
-            <table>
-                <thead>
-                    <tr className='table-header'>
-                        <td id='td-white'></td>
-                        <th>Sunday</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                    </tr>
-                </thead>
-               
+    
+            <div class="content mt-3">
+                <div class="animated fadeIn">
+                    <div class="row">
+    
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title"> <u>Todos los turnos </u>
+                                    </strong>
+                                </div>
+                                <div class="card-body">
+                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Teléfono</th>  
+                                                <th>Fecha</th>     
+                                                <th>Hora</th>  
+                                                <th>Borrar </th>
+                                            </tr>
+                                        </thead>
 
-                 <tbody>
-                    {
-                        appointments.map((user, i) => 
-                    {
-                        return(
-                          <div className="col-md-3">
-  
-                          <div className="product">
-                            <div className="img-container">
-                              <div key={i} >{user.name}</div>
+                                               {
+                                         this.state.appointments.map((user, i) => 
+                                             {
 
-                              <div key={i} >{user.phone}</div>
-                              <div key={i} >{user.date}</div>
-                              <div key={i} >{user.time}</div>
-                              <div key={i} >{user.date}</div>
+                                                return(
+                                         <tbody>
+                                            <tr>
+                                                <td   > {user.name}   </td>
+                                                <td   >  {user.phone} </td> 
+                                                <td   > {user.date}   </td>
+                                                <td   >  {user.time} </td>  
+                                                <td   >
+                                                      <button 
+                                                      onClick={() => this.deleteAppointment(user._id)}
+                                                      class="btn btn-success btn-flat m-b-30 m-t-30">
+                                                      Borrar</button>
+                                                </td>
+                                            </tr>
+                                     
+
+                                        </tbody>
 
 
+                                             )
+                                      })
+                                     }
+
+                                    
+ 
+
+                                      
+
+
+                                                
+                                    </table>
+                                </div>
                             </div>
-                          </div>
-                          </div>
-  
-                        )
-                    })
-                }
-                </tbody>
-            </table>   
-        </div>
-    )
+                        </div>
+    
+    
+                    </div>
+                    </div> 
+                    </div> 
+                    </div> 
+        
+    
+ 
+
+   </div >
+
+)
+}
 }
 
-export default AppointmentsList
+// export default AppointmentsList
 

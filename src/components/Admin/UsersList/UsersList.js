@@ -1,161 +1,230 @@
-import React, { Component } from 'react'
- 
-export default class AppointmentsList  extends Component {
-    constructor() {
-    super();
-    this.state = {
-   
-      appointments: []
-       
-      };
-      // this.handleChange = this.handleChange.bind(this);
-      // this.addPost = this.addPost.bind(this);
+import React, {useState, useEffect} from 'react'
+import './UserProfile.css'
+import Navbar from '../Home/Navbar/Navbar'
+import profileImg  from '../../assets/profile-img.jpg'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
+import {getCookie, setCookie, setCookieInMins, deleteCookie} from '../../cookies'
 
+
+const UserProfile = (props) => {
+    //const [nombre, setNombre] = useState('')
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+
+    const [updatedName, setUpdatedName] = useState('')
+    const [updatedEmail, setUpdatedEmail] = useState('')
+    const [updatedPhone, setUpdatedPhone] = useState('')
+
+    const [time, setTime] = useState('Vacío')
+    const [date, setDate] = useState('')
+    const [day, setDay] = useState('')
+
+
+
+    useEffect(() =>{
+        getProfile(getCookie('id'))
+        console.log('upload user profile')
+    },[])
+
+    
+    const getProfile = (userID) =>{
+       axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
+      //   axios.get(`https://backbarber.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
+
+            let {error, name, email,   phone } = response.data 
+            if(error){
+                console.log(error)
+            }
+            else{
+                setName(name)
+               // setNombre(nombre)
+                setEmail(email)
+                setPhone(phone)
+                setCookie('phone', phone ,2)
+                console.log(response.data)
+            }
+        })
+      //  axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
+       axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
+            console.log(response.data)
+
+            let {error, day, time, date, nombre } = response.data 
+            if(error){
+                console.log(error)
+            }
+            else{
+                setTime(time)
+                setDate(date)
+                setDay(day)
+            }
+        })
     }
 
-    componentDidMount() {
-      this.fetchPosts();
-  
-    }
+    const updateProfile = () =>{
 
-    fetchPosts() {
-      fetch('http://localhost:4000/getappointments')
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          this.setState({appointments: data});
-          console.log(this.state.appointments)
-        });
-  
-        
-    }
-  
-
-    deleteAppointment(_id) {
-
-       fetch(`http://localhost:4000/delete/${_id}`, {
-        method: 'DELETE',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+        if(updatedName === '' && updatedEmail ==='' && updatedPhone ===''){ 
+            alert('all fields are empty')
         }
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          this.fetchPosts();
-        });
+        else{
 
-        alert('El turno ha sido borrado')
-        window.location.replace('/total')
-    
-      }
+            let obj = {}
+            obj.name = updatedName
+            obj.email = updatedEmail
+            obj.phone = updatedPhone
+            obj.userID = getCookie('id')
+
+         //    axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
+           axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
+                let {error} = response.data
+
+                if(error){
+                    alert('update profile: '+error)
+                }
+                else{
+                    
+                     
+                    if(email !=='')
+                        setEmail(email)
+                    if(phone !==''){
+                        setPhone(phone)
+                        setCookie('phone', phone ,2)
+                    }
+                    // if(name !==''){
+                    //     setCookie('name', name ,2)
+                    //     setName(name)
+                    // }
+                    alert('data successfully updated!')
+                    window.location.reload(false);
+                    console.log('server res: ', response.data)
+                }
+            })
+        }
+    }
 
 
+    const changeAppointment = () =>{
+        console.log('change appointment')
 
+        if(time === 'Empty'){
+            alert('You not have appointment')
+        }else{
+            setCookieInMins('change', true, 1)
+            props.history.push({ pathname: '/appointment' });
+        }
+    }
 
+    const cancelAppointment = async() => {
 
-     render() {    
+      //  let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
+         let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
+        console.log(response.data)
+        let {error} = response.data
+        if(error){
+            alert(error)
+        }
+        else{
+            alert('Su turno ha sido cancelado')
+            window.location.replace('/profile')
+        }
+    }
 
-       return (
+    const deleteAcc = async() =>{
+        console.log('id cookie ',getCookie('id'))
+         let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
+      // let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
 
-        <div >
-        <div id="right-panel" class="right-panel">
-    
-         
-    
-            <div class="breadcrumbs">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h1></h1>
-                        </div>
-                    </div>
+        let {error} = response.data
+        if(error){
+            alert(error)
+        }
+        else{
+
+            deleteCookie('id')
+            deleteCookie('admin')
+            deleteCookie('status')
+            deleteCookie('name')
+
+            alert(response.data)
+            window.location.replace('/')
+        }
+    }
+
+    return (
+
+        <div>
+<Navbar/>
+
+<div class="bg-dark">
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="index.html">
+                        <img class="align-content" src="images/logo.png" alt=""/>
+                    </a>
                 </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                           
+                <div class="login-form">
+                    <form>
+                        <div class="form-group">
+                            <h2><u> Mi Cuenta</u></h2>
                         </div>
-                    </div>
+                         <div class="form-group">
+                          <u> Nombre:</u> <span>{name}</span>
+                        </div>
+                        <div class="form-group">
+                          <u>Email:</u>  <span>{email}</span>
+                        </div>
+                        <div class="form-group">
+                         <u> Teléfono:</u>  <span>{phone}</span>
+                        </div>
+                        <div class="checkbox">
+                            <label> 
+                                    <u>
+                                Tiene un turno para el día:
+                                    </u>
+                             </label>
+                             <label class="pull-right">
+                                <a>
+                                   <p>{day}</p>
+                                   <p>{time}</p>
+                                   <p>{date}</p>
+                                </a>
+                             </label>
+                        </div>
+                                <button onClick={cancelAppointment} class="btn btn-success btn-flat m-b-30 m-t-30">Cancelar turno</button>
+                                <div class="social-login-content">
+                                    <div class="social-button">
+                                         <Link  type="button" class="btn social facebook btn-flat btn-addon mb-3" to='/appointment'>
+                                                Tomar turno  
+                                         </Link>
+                                    </div>  
+                                 </div>
+                                 <div class="social-login-content">
+                                    <div class="social-button">
+                                        <button onClick={deleteAcc}  type="button" class="btn btn-danger  btn-flat btn-addon mb-3" to='/appointment'>
+                                                Eliminar la cuenta
+                                         </button>
+                                    </div>
+                                </div>
+                                <div class="register-link m-t-15 text-center">
+                                </div>
+                    </form>
                 </div>
             </div>
-    
-            <div class="content mt-3">
-                <div class="animated fadeIn">
-                    <div class="row">
-    
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title"> <u>Todos los turnos </u>
-                                    </strong>
-                                </div>
-                                <div class="card-body">
-                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Teléfono</th>  
-                                                <th>Fecha</th>     
-                                                <th>Hora</th>  
-                                                <th>Borrar </th>
-                                            </tr>
-                                        </thead>
-
-                                               {
-                                         this.state.appointments.map((user, i) => 
-                                             {
-
-                                                return(
-                                         <tbody>
-                                            <tr>
-                                                <td   > {user.name}   </td>
-                                                <td   >  {user.phone} </td> 
-                                                <td   > {user.date}   </td>
-                                                <td   >  {user.time} </td>  
-                                                <td   >
-                                                      <button 
-                                                      onClick={() => this.deleteAppointment(user._id)}
-                                                      class="btn btn-success btn-flat m-b-30 m-t-30">
-                                                      Borrar</button>
-                                                </td>
-                                            </tr>
-                                     
-
-                                        </tbody>
+        </div>
+    </div>
 
 
-                                             )
-                                      })
-                                     }
-
-                                    
- 
-
-                                      
 
 
-                                                
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-    
-    
-                    </div>
-                    </div> 
-                    </div> 
-                    </div> 
-        
-    
- 
 
-   </div >
-
-)
-}
+ </div>
+            
+        </div>
+    )
 }
 
-// export default AppointmentsList
-
+export default UserProfile
