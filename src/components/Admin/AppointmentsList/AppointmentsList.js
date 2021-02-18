@@ -58,18 +58,18 @@ const AppointmentsList = () => {
                 </div>
             </div>
             
-            <h3>The appointments are between {`${thisSunday} and ${lastSunday}`}</h3>
+            <h3>Todos los turnos de la semana entre los días {`${thisSunday} and ${lastSunday}`}</h3>
         
             <table>
                 <thead>
                     <tr className='table-header'>
                         <td id='td-white'></td>
-                        <th>Sunday</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
+                        <th>Domingo</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
                     </tr>
                 </thead>
                 <tbody>
