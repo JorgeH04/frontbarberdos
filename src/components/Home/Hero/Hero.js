@@ -16,7 +16,7 @@ const Hero = () => {
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="carousel-content centeredd">
+                                <div class="carousell-content centeredd">
                                     <h2 class="boxed animation animated-item-11"> 
                                     La barbería como ritual social
                                     </h2>
