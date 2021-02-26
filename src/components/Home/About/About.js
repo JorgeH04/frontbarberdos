@@ -16,35 +16,26 @@ const About = () => {
 				<div class="row">
 						<div class="col-lg-6 col-md-12">
 								<div class="about-me-info u-s-m-b-30">
-										<h1>Bienvenidos a <span> Barbería Parodi</span>
+										<h1>Bienvenidos a <span> Barbería Parodi </span>											 	 
 										</h1>
-										<p>nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-											 magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-											 sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-											  sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-											  sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-											  sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-											  sed quia consequuntur magni dolores eos
-										</p>
 
-										
+													<p> 
 
-										<p> nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos nim 
-											ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos nim ipsam 
-											voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos nim ipsam voluptatem 
-											quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas 
-											
-										</p>
-										
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+ incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, tempor incididunt 
+ ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+ laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit 
+ anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+ proident, sunt in culpa qui officia deserunt mollit anim id est laborum. tempor incididunt 
+ ut labore et dolore magna aliqua. Ut enim ad minim veniam, tempor incididunt ut labore et 
+ dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+ ut aliquip ex ea commodo tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+ veniam, tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+ nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 
-										<p>
-											
-										</p>
-										
-										
-										<p>
-											
-										</p>
+
+</p>
+
 								</div>
 						</div>
 						<div class="col-lg-6 col-md-12">

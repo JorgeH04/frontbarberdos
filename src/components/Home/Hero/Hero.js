@@ -21,7 +21,7 @@ const Hero = () => {
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centeredd">
-                                    <h2 class="boxed animation animated-item-1"> 
+                                    <h2 class="boxed animation animated-item-11"> 
                                     La barbería como ritual social
                                     </h2>
                                     <p class="animation animated-item-2"></p>
