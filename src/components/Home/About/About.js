@@ -18,26 +18,33 @@ const About = () => {
 								<div class="about-me-info u-s-m-b-30">
 										<h1>Bienvenidos a <span> Barbería Parodi</span>
 										</h1>
-										<p>El arte de hacer cerveza es un proceso que lleva tiempo y mucho cuidado, controlando siempre la higiente del equipo y la propia, se necesita conocimientos y experiencia. 
-											Habiendo hecho una tecnicatura en alimentos con especialización en cerveza durante el período 2004-2008 en Suiza, y haber recorrido cada instancia de la producción de 
-											cerveza, desde la plantación y adquisición de. materias primas hasta la venta de la cerveza en negocios, bares y restaurantes, después de tanto tiempo nace este proyecto 
-											cervecero el 16 de septiembredel 2020 como negocio familiar.
+										<p>nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+											 magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+											 sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+											  sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+											  sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+											  sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+											  sed quia consequuntur magni dolores eos
 										</p>
 
 										
 
-										<p> Utilizando como locación la casa de mis abuelos y haciendo uso de alguna de sus herramientas, en homenaje a ellos nombramos la cervecer+ia "Grossi", nombre que significa 
-											"Abuelos" en suizo alemán. A los maternos, gracias a Willhelm, gracias a Herta y a los paternos, gracias a Josef Marie, gracias Julia.
+										<p> nim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos nim 
+											ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos nim ipsam 
+											voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos nim ipsam voluptatem 
+											quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos nim ipsam voluptatem quia voluptas 
+											
 										</p>
 										
 
-										<p>Desde ya agradezco a todas las personas que hicieron esto posible y a los que siguen aportando apoyo de cualquier manera. Ojalá sea este un proyecto exitoso y sino, de 
-											cualquier manera, seguimos disfrutando del proceso aprendiendo de él, conociendo gente nueva y pasando tiempo con seres queridos. 
+										<p>
+											
 										</p>
 										
 										
-										<p>Atte. El equipo de Grossi (somos pocos, 
-												pero hay equipo!)</p>
+										<p>
+											
+										</p>
 								</div>
 						</div>
 						<div class="col-lg-6 col-md-12">

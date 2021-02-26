@@ -20,8 +20,10 @@ const Hero = () => {
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="carousel-content centered">
-                                    <h2 class="boxed animation animated-item-1"> La barbería como ritual social</h2>
+                                <div class="carousel-content centeredd">
+                                    <h2 class="boxed animation animated-item-1"> 
+                                    La barbería como ritual social
+                                    </h2>
                                     <p class="animation animated-item-2"></p>
                                     <div className='hero-text'>
 
