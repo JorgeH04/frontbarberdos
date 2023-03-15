@@ -9,7 +9,7 @@ const UserList = () => {
     useEffect(()=>{
         console.log('user list rendred')
        // axios.get('http://localhost:4000/getusers').then((response) => {
-        axios.get('https://backbarber.herokuapp.com/getusers').then((response) => {
+        axios.get('https://barberback.herokuapp.com/getusers').then((response) => {
         
             let {error} = response.data
             if(error){

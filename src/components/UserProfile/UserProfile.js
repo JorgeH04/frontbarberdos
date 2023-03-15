@@ -12,11 +12,9 @@ const UserProfile = (props) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-
     const [updatedName, setUpdatedName] = useState('')
     const [updatedEmail, setUpdatedEmail] = useState('')
     const [updatedPhone, setUpdatedPhone] = useState('')
-
     const [time, setTime] = useState('Vacío')
     const [date, setDate] = useState('')
     const [day, setDay] = useState('')
@@ -31,7 +29,7 @@ const UserProfile = (props) => {
     
     const getProfile = (userID) =>{
       // axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
-          axios.get(`https://backbarber.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
+          axios.get(`https://barberback.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
 
             let {error, name, email,   phone } = response.data 
             if(error){
