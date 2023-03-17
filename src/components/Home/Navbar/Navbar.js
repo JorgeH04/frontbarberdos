@@ -106,7 +106,7 @@ const Navbar = () => {
 
                     <li>
                          <Link  to='/about'>
-                            Nosotros
+                            About us
                          </Link>
                     </li>
 
@@ -115,7 +115,7 @@ const Navbar = () => {
 
                     <li>
                          <Link  to='/contacto'>
-                            Contacto
+                            Contact
                          </Link>
                     </li>    
  
@@ -127,13 +127,13 @@ const Navbar = () => {
 
                     <li>
                           <Link className='links up' to='/profile'>
-                            Perfil
+                            Profile
                           </Link>
                     </li>
 
                    <li>
                           <Link className='login-reg-links' to='/login'>
-                            Iniciar Sesión
+                            Login
                           </Link>
                     </li>
                    
@@ -142,7 +142,7 @@ const Navbar = () => {
                      
                     <div className='user-loggedIn'>
                       <li>
-                          <button className='disappear' onClick={logout}>Salir</button>
+                          <button className='disappear' onClick={logout}>Logout</button>
                       </li>
 
                     </div>

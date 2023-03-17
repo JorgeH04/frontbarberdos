@@ -28,8 +28,8 @@ const UserProfile = (props) => {
 
     
     const getProfile = (userID) =>{
-      // axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
-          axios.get(`https://barberback.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
+       axios.get(`http://localhost:4000/profiledata?id=${userID}`).then((response) =>{
+        //  axios.get(`https://barberback.herokuapp.com/profiledata?id=${userID}`).then((response) =>{
 
             let {error, name, email,   phone } = response.data 
             if(error){
@@ -44,8 +44,8 @@ const UserProfile = (props) => {
                 console.log(response.data)
             }
         })
-        axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
-     //  axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
+      //  axios.get(`https://backbarber.herokuapp.com/userappointment?id=${userID}`).then((response) =>{
+       axios.get(`http://localhost:4000/userappointment?id=${userID}`).then((response) =>{
             console.log(response.data)
 
             let {error, day, time, date, nombre } = response.data 
@@ -73,8 +73,8 @@ const UserProfile = (props) => {
             obj.phone = updatedPhone
             obj.userID = getCookie('id')
 
-             axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
-          // axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
+          //   axios.post('https://backbarber.herokuapp.com/updateprofile', obj).then((response) =>{
+           axios.post('http://localhost:4000/updateprofile', obj).then((response) =>{
                 let {error} = response.data
 
                 if(error){
@@ -115,23 +115,23 @@ const UserProfile = (props) => {
 
     const cancelAppointment = async() => {
 
-      let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
-      //   let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
+     // let response = await axios.post('https://backbarber.herokuapp.com/cancelappointment', {id:getCookie('id')})
+         let response = await axios.post('http://localhost:4000/cancelappointment', {id:getCookie('id')})
         console.log(response.data)
         let {error} = response.data
         if(error){
             alert(error)
         }
         else{
-            alert('Su turno ha sido cancelado')
+            alert('Your appointment has been cancelled')
             window.location.replace('/profile')
         }
     }
 
     const deleteAcc = async() =>{
         console.log('id cookie ',getCookie('id'))
-      //   let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
-       let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
+         let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
+    //   let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
 
         let {error} = response.data
         if(error){
@@ -167,21 +167,21 @@ const UserProfile = (props) => {
                 <div class="login-form">
                     <form>
                         <div class="form-group">
-                            <h2><u> Mi Cuenta </u></h2>
+                            <h2><u> My account</u></h2>
                         </div>
                         <div class="form-group">
-                          <u> Nombre:</u> <span>{name}</span>
+                          <u> Name:</u> <span>{name}</span>
                         </div>
                         <div class="form-group">
                           <u>Email:</u>  <span>{email}</span>
                         </div>
                         <div class="form-group">
-                         <u> Teléfono:</u>  <span>{phone}</span>
+                         <u> Phone:</u>  <span>{phone}</span>
                         </div>
                         <div class="checkbox">
                             <label> 
                                     <u>
-                                Tiene un turno para el día:
+                                You have an appointment :
                                     </u>
                              </label>
                              <label class="pull-right">
@@ -192,18 +192,20 @@ const UserProfile = (props) => {
                                 </a>
                              </label>
                         </div>
-                                <button onClick={cancelAppointment} class="btn btn-success btn-flat m-b-30 m-t-30">Cancelar turno</button>
+                                <button onClick={cancelAppointment} class="btn btn-success btn-flat m-b-30 m-t-30">
+                                    Cancel appointment
+                                </button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                          <Link  type="button" class="btn social facebook btn-flat btn-addon mb-3" to='/appointment'>
-                                                Tomar turno  
+                                         Book an appointment
                                          </Link>
                                     </div>  
                                  </div>
                                  <div class="social-login-content">
                                     <div class="social-button">
                                         <button onClick={deleteAcc}  type="button" class="btn btn-danger  btn-flat btn-addon mb-3"  to='/appointment'>
-                                                Eliminar la cuenta
+                                               Delete account
                                          </button>
                                     </div>
                                 </div>

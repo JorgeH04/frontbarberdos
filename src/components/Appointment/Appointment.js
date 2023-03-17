@@ -73,8 +73,8 @@ const Appointment = (props) => {
         appointmentData.day = obj.day
         appointmentData.timeInMS = time
 
-        let response = await axios.post('https://barberback.herokuapp.com/changeappointment', appointmentData)
-     //  let response = await axios.post('http://localhost:4000/changeappointment', appointmentData)
+      //  let response = await axios.post('https://barberback.herokuapp.com/changeappointment', appointmentData)
+        let response = await axios.post('http://localhost:4000/changeappointment', appointmentData)
         let { error } = response.data
         if(error){
             console.log(error)
@@ -101,7 +101,9 @@ const Appointment = (props) => {
         appointmentData.day = obj.day
         appointmentData.timeInMS = time
        
-        let response = await axios.post('https://barberback.herokuapp.com/appointment', appointmentData)
+       // let response = await axios.post('https://barberback.herokuapp.com/appointment', appointmentData)
+        let response = await axios.post('http://localhost:4000/appointment', appointmentData)
+
         let { error } = response.data
         if(error){
             setError(error)
@@ -142,12 +144,12 @@ const Appointment = (props) => {
             <Navbar/>
             <div className='appointment-container'>
                 <div className='appointment-form'>
-                    <h1>Reservar un turno</h1>
+                    <h1>Book an appointment</h1>
                     <div className='appointment-inner-container'>
                         {error !== '' ?  <ErrorMsg info={error}/>
                         
                         : ''}
-                        <p>Elija un día:<span className='red-astrix'>*</span></p>
+                        <p>Day:<span className='red-astrix'>*</span></p>
                         <DatePicker
                             selected={startDate}
                             onChange={handleChange}
@@ -158,7 +160,7 @@ const Appointment = (props) => {
                         />
                     </div>
                     <div className='appointment-inner-container'>
-                        <p>Elija una hora:<span className='red-astrix'>*</span></p>
+                        <p>Hour:<span className='red-astrix'>*</span></p>
                         <Select
                             value={updatedOptions.filter((option) => {
                                 return option.value === userTime
@@ -170,10 +172,11 @@ const Appointment = (props) => {
                     </div>
 
                     <div id='appo-phone' className='appointment-inner-container'>
-                        <p>Celular: <span className='red-astrix'>*</span></p>
+                        <p>Cellphone: <span className='red-astrix'>*</span></p>
                         <input type="tel" className='phone-input' placeholder='phone...' 
-                        value={phone ? phone : 'teléfono...'}
-                        onChange={(e)=>setPhone(e.target.value)}/>
+                          value={phone ? phone : 'teléfono...'}
+                          onChange={(e)=>setPhone(e.target.value)}
+                          />
                     </div>
                     <div id='make-btn' className='appointment-inner-container'>
                         <button onClick={makeAppointment} className='appointment-btn'>Enviar</button>
@@ -182,10 +185,10 @@ const Appointment = (props) => {
                         <button onClick={changeAppointment} className='appointment-btn'>Update</button>
                     </div>
                     <div className='appointment-data'>
-                        <h3>El turno será para:</h3>
-                        <p>Día:  <span>{userDate}</span></p>
-                        <p>Hora: <span>{userTime}</span></p>
-                        <p>Celular: <span>{phone}</span></p>
+                        <h3>Appointment info:</h3>
+                        <p>Day:  <span>{userDate}</span></p>
+                        <p>Time: <span>{userTime}</span></p>
+                        <p>Cellphone: <span>{phone}</span></p>
                     </div>
                 </div>
             </div> 
