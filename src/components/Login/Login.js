@@ -26,8 +26,8 @@ const Login = (props) => {
         userData.email = email
         userData.pass = pass
         
-        let response = await axios.post('http://localhost:4000/login', userData)
-        //let response = await axios.post('https://barberback.herokuapp.com/login', userData)
+       // let response = await axios.post('http://localhost:4000/login', userData)
+        let response = await axios.post('https://barberback.herokuapp.com/login', userData)
         let {id, status, error, name, admin, phone} = response.data
         if(error){
             loading.style.display = 'none'

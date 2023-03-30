@@ -130,8 +130,8 @@ const UserProfile = (props) => {
 
     const deleteAcc = async() =>{
         console.log('id cookie ',getCookie('id'))
-         let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
-    //   let response = await axios.post('https://backbarber.herokuapp.com/deleteacc', {id:getCookie('id')})
+          let response = await axios.post('http://localhost:4000/deleteacc', {id:getCookie('id')})
+    //  let response = await axios.post('https://barberback.herokuapp.com/deleteacc', {id:getCookie('id')})
 
         let {error} = response.data
         if(error){
